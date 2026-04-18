@@ -1,7 +1,7 @@
-/* Stili Generali e Contenitore */
-.auth-container {
+/* Contenitore generale per QUALSIASI form */
+.form-container {
     display: flex;
-    flex-direction: column; /* Serve per mettere gli errori sotto la card */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 90vh;
@@ -10,8 +10,8 @@
     padding: 20px;
 }
 
-/* La Scheda Bianca */
-.auth-card {
+/* Card generica */
+.form-card {
     background: white;
     padding: 2rem;
     border-radius: 12px;
@@ -20,13 +20,13 @@
     max-width: 400px;
 }
 
-.auth-card h2 {
+.form-card h2 {
     margin-bottom: 1.5rem;
     color: #333;
     text-align: center;
 }
 
-/* Gruppi di Input */
+/* Gruppi input generici */
 .form-group {
     margin-bottom: 1.2rem;
 }
@@ -38,22 +38,32 @@
     font-size: 0.9rem;
 }
 
-.form-group input {
+input{
+    width: 95%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+.form-group textarea,
+.form-group select {
     width: 100%;
     padding: 0.8rem;
     border: 1px solid #ddd;
     border-radius: 6px;
-    box-sizing: border-box;
     transition: all 0.3s;
 }
 
-.form-group input:focus {
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
     outline: none;
     border-color: #4f46e5;
     box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
 
-/* Bottone */
+/* Bottone generico */
 .btn-submit {
     width: 100%;
     padding: 0.8rem;
@@ -71,42 +81,55 @@
     background-color: #4338ca;
 }
 
-/* Footer link */
-.auth-footer {
+/* Footer generico */
+.form-footer {
     margin-top: 1.5rem;
     text-align: center;
     font-size: 0.85rem;
     color: #777;
 }
 
-.auth-footer a {
+.form-footer a {
     color: #4f46e5;
     text-decoration: none;
     font-weight: 600;
 }
 
-/* --- SEZIONE ERRORI --- */
-.error {
+/* Errori generici */
+.form-errors {
     width: 100%;
     max-width: 400px;
     margin-top: 1.5rem;
 }
 
-.error ul {
-    background-color: #fee2e2; /* Sfondo rosso chiaro */
-    border-left: 4px solid #ef4444; /* Bordo rosso scuro a sinistra */
+.form-errors ul {
+    background-color: #fee2e2;
+    border-left: 4px solid #ef4444;
     padding: 1rem 1rem 1rem 2rem;
     border-radius: 6px;
     list-style-type: disc;
     margin: 0;
 }
 
-.error li {
-    color: #b91c1c; /* Testo rosso scuro */
+.form-errors li {
+    color: #b91c1c;
     font-size: 0.85rem;
     margin-bottom: 0.3rem;
 }
 
-.error li:last-child {
+.form-errors li:last-child {
     margin-bottom: 0;
 }
+
+.form-arrow{
+    width: 100%;
+    max-width: 450px;
+}
+
+.form-arrow a{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+

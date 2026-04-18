@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f6f8;
+    color: #1f2937;
+}
+
+/* NAV / LINKS */
+.links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.links a {
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    color: #fff;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(79, 70, 229, 0.25);
+}
+
+.links a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.35);
+    background: linear-gradient(135deg, #4338ca, #4f46e5);
+}
+
+.links a:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(79, 70, 229, 0.25);
+}
+
+/* MAIN CONTENT */
+main {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+/* HERO SECTION */
+h1 {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #111827;
+}
+
+h2 {
+    margin-top: 40px;
+    color: #4f46e5;
+}
+
+p {
+    line-height: 1.6;
+    font-size: 16px;
+    color: #374151;
+}
+
+/* SECTION BOX STYLE */
+section {
+    background: #ffffff;
+    padding: 25px;
+    margin-top: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+/* LIST */
+ul {
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+/* CTA BUTTONS (se li usi nella home) */
+a {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    margin-top: 60px;
+    padding: 20px;
+    color: #6b7280;
+    font-size: 14px;
+}

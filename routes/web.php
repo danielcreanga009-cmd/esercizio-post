@@ -21,3 +21,13 @@ Route::post('/login', [UserController::class, 'loginUser'])->name('loginUser');
 Route::get('/posts', [PostController::class, 'showPosts'])->name('showPosts')->middleware('auth');
 
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+Route::get('/posts/create', [PostController::class, 'createForm'])->name('createForm');
+
+Route::post('/posts/create', [PostController::class, 'createPost'])->name('createPost');
+
+Route::get('posts/edit/{post}', [PostController::class, 'editForm'])->name('editForm');
+
+Route::post('/posts/edit/{post}', [PostController::class, 'editPost'])->name('editPost');
+
+Route::post('/posts/delete/{post}', [PostController::class, 'deletePost'])->name('deletePost');

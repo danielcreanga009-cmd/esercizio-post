@@ -1,41 +1,34 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post manager</title>
     <link rel="stylesheet" href="{{ asset('css/form_style.css') }}">
+    <title>Post manager</title>
 </head>
 <body>
-
     <div class="form-container">
         <div class="form-arrow">
-            <a href="{{route('home')}}" class="arrowBack">← torna indetro</a>
+            <a href="{{url()->previous()}}" class="arrowBack">← torna indetro</a>
         </div>
         <div class="form-card">
-            <h2>Accedi</h2>
-
-            <form action="{{ route('loginUser') }}" method="POST">
+            <h2>Modifica Post</h2>
+            <form action="{{route('editPost',$post)}}" method="POST">
                 @csrf
 
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" required>
+                    <label for="title">Titolo</label>
+                    <input type="text" name="title" value="{{$post->title}}" required>
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" required>
+                    <label for="content">Contenuto</label>
+                    <input type="text" name="content" value="{{$post->content}}" required>
                 </div>
 
-                <button type="submit" class="btn-submit">Entra</button>
+                <button type="submit" class="btn-submit">Modifica</button>
             </form>
-
-            <div class="form-footer">
-                Non hai un account? <a href="{{route('registerForm')}}">Registrati</a>
-            </div>
         </div>
-
         <div class="form-errors">
             @if ($errors->any())
                 <ul>
@@ -46,6 +39,6 @@
             @endif
         </div>
     </div>
-
+    
 </body>
 </html>

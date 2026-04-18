@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrazione</title>
+    <title>Post manager</title>
     <link rel="stylesheet" href="{{ asset('css/form_style.css') }}">
 </head>
 <body>
-    <div class="auth-container">
-        <div class="auth-card">
+
+    <div class="form-container">
+        <div class="form-arrow">
+            <a href="{{route('home')}}" class="arrowBack">← torna indetro</a>
+        </div>
+        <div class="form-card">
             <h2>Crea un Account</h2>
             
             <form action="{{ route('registerUser') }}" method="POST">
@@ -37,19 +41,21 @@
                 <button type="submit" class="btn-submit">Registrati</button>
             </form>
 
-            <div class="auth-footer">
+            <div class="form-footer">
                 Hai già un account? <a href="{{route('login')}}">Accedi qui</a>
             </div>
         </div>
-        <div class="error">
-                @if ($errors->any())
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                @endif
+
+        <div class="form-errors">
+            @if ($errors->any())
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            @endif
         </div>
     </div>
+
 </body>
 </html>

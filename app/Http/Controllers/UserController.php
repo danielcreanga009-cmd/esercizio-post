@@ -23,7 +23,7 @@ class UserController extends Controller
 
     public function registerUser(Request $request){
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:users,name',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:5|confirmed', 
         ]);
@@ -36,7 +36,7 @@ class UserController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('login');
+        return redirect()->route('showPosts');
     }
 
 
