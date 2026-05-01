@@ -55,6 +55,16 @@ h2 {
     color: #4f46e5;
 }
 
+.accesso{
+    margin-left: 10%;
+    color: green;
+}
+
+.postBody{
+    display: flex;
+    justify-content: space-between;
+}
+
 p {
     line-height: 1.6;
     font-size: 16px;
@@ -70,20 +80,22 @@ section {
     box-shadow: 0 8px 20px rgba(0,0,0,0.05);
 }
 
-/* LIST */
 ul {
-    padding-left: 20px;
+    list-style: none;
 }
 
-ul li {
+
+.title{
+    font-size: 20px;
+    font-weight: bold;
     margin-bottom: 10px;
 }
 
-/* CTA BUTTONS (se li usi nella home) */
-a {
-    display: inline-block;
-    margin-top: 10px;
+.content{
+    color: #555;
+    margin-bottom: 15px;
 }
+
 
 /* FOOTER */
 footer {

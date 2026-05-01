@@ -23,7 +23,7 @@
 
                 <div class="form-group">
                     <label for="content">Contenuto</label>
-                    <input type="text" name="content" value="{{$post->content}}" required>
+                    <textarea rows="4" cols="50" style="resize: none;" name ="content">{{$post->content}}</textarea>
                 </div>
 
                 <button type="submit" class="btn-submit">Modifica</button>

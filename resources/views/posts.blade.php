@@ -8,13 +8,16 @@
 </head>
 <body>
     <h1>Posts di {{$user->name}}</h1>
-    <div class="sideBtn">
-        <a href="{{route('logout')}}" class="logoutBtn">Logout</a>
-        <a href="{{route('home')}}" class="homeBtn">Home</a>
+    <div class="navBar">
+        <a href="{{route('createForm')}}">Aggiungi Post</a>
+        <div class="sideBtn">
+            <a href="{{route('logout')}}" class="logoutBtn">Logout</a>
+            <a href="{{route('home')}}" class="homeBtn">Home</a>
+        </div>
     </div>
+    
 
-    <br>
-    <a href="{{route('createForm')}}">Aggiungi Post</a>
+    
 
     @foreach($posts as $post)
     <ul>

@@ -10,19 +10,23 @@ body {
     padding: 40px;
 }
 
-.sideBtn{
-    position: fixed;
-    right: 45%;
+.navBar{
+    display: flex;
+    justify-content: space-between;
+    max-width: 600px;
+    align-items: center;
+    height: 80px;
 }
 
-.sideBtn a{
-    margin: 10px;
+.sideBtn{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 200px;
 }
 
 /* Link "Aggiungi Post" */
 a {
-    display: inline-block;
-    margin-bottom: 30px;
     text-decoration: none;
     background-color: #2563eb;
     color: white;

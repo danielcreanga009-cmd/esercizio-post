@@ -21,7 +21,7 @@
                 </div>
                 <div class="form-group">
                     <label for="content">Contenuto</label>
-                    <input type="text" name="content" required>
+                    <textarea rows="4" cols="50" style="resize: none;" name ="content"></textarea>
                 </div>
     
                 <button type="submit" class="btn-submit">Crea</button>

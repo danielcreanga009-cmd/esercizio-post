@@ -13,69 +13,44 @@
     <div class="links">
         @auth
             <a href="{{ route('logout') }}">Logout</a>
-            <a href="{{ route('showPosts') }}">Vedi i tuoi post</a>
+            <a href="{{ route('showPosts') }}">Crea o vedi i tuoi post</a>
         @endauth
 
         @guest
+            <a href="{{route('login')}}">Crea un post</a>
             <a href="{{ route('login') }}">Login</a>
             <a href="{{ route('registerForm') }}">Registrati</a>
         @endguest
     </div>
 </header>
 
+<div class="accesso">
+    @isset($user)
+    <h3>Accesso effettuato come {{$user->name}}</h3>
+    @endisset
+    @empty($user)
+    <h3>Stai navigando anonimo</h3>
+    @endempty
+</div>
+
 <main>
-
+    @foreach($posts as $post)
     <section>
-        <h1>Benvenuto su Post Manager</h1>
-        <p>
-            Post Manager è una piattaforma sviluppata con Laravel che ti permette di creare,
-            gestire e organizzare i tuoi post personali in modo semplice e veloce.
-        </p>
-
-        <p>
-            Ogni utente ha un’area privata dove può salvare i propri contenuti,
-            modificarli in qualsiasi momento o eliminarli quando non servono più.
-        </p>
-
-        @guest
-            <p>Per iniziare, registrati oppure accedi al tuo account.</p>
-            <a href="{{ route('registerForm') }}">Inizia ora</a>
-            <a href="{{ route('login') }}">Accedi</a>
-        @endguest
-
-        @auth
-            <p>Sei loggato! Puoi iniziare a gestire i tuoi post.</p>
-            <a href="{{ route('showPosts') }}">Vai ai tuoi post</a>
-        @endauth
+        <h2>Creato da: {{$post->user->name}}</h2>
+        <div class="postBody">
+            <ul>
+                <li class="title">{{$post->title}}</li>
+                <li class="content">{{$post->content}}</li>
+            </ul>
+            <div class="date">
+                <p>
+                    creato il {{ $post->created_at->format('d-m-Y') }} 
+                    ore {{ $post->created_at->format('H:i') }}
+                </p>
+            </div>
+        </div>
     </section>
-
-    <hr>
-
-    <section>
-        <h2>Cosa puoi fare</h2>
-
-        <ul>
-            <li>Creare nuovi post in pochi secondi</li>
-            <li>Modificare i tuoi contenuti quando vuoi</li>
-            <li>Eliminare post non più utili</li>
-            <li>Visualizzare solo i tuoi dati in modo sicuro</li>
-        </ul>
-    </section>
-
-    <hr>
-
-    <section>
-        <h2>Perché questo progetto?</h2>
-        <p>
-            Questo progetto è stato realizzato per imparare Laravel e il funzionamento di un sistema CRUD completo.
-            Simula una vera applicazione web dove ogni utente ha il proprio spazio personale.
-        </p>
-
-        <p>
-            In futuro può essere esteso con funzionalità avanzate come categorie, immagini, commenti e ricerca.
-        </p>
-    </section>
-
+    @endforeach
 </main>
 
 <footer>

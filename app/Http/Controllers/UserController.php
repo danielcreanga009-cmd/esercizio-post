@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Post;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +19,9 @@ class UserController extends Controller
     }
 
     public function showHome(){
-        return view('home');
+        $posts = Post::with('user')->get();
+        $user = User::find(auth()->id());
+        return view('home', compact('posts'), compact('user'));
     }
 
     public function registerUser(Request $request){
@@ -50,6 +53,8 @@ class UserController extends Controller
             $request->session()->regenerate();
             return redirect()->route('showPosts');
         };
+
+
 
         return back()->withErrors([
             'email' => 'Le credenziali fornite non sono corrette.',
