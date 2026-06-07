@@ -8,6 +8,7 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
+
 class UserController extends Controller
 {
     public function registerForm(){
@@ -19,7 +20,7 @@ class UserController extends Controller
     }
 
     public function showHome(){
-        $posts = Post::with('user')->get();
+        $posts = Post::with('likedByUsers', 'user')->get(); //relazione
         $user = User::find(auth()->id());
         return view('home', compact('posts'), compact('user'));
     }
@@ -51,7 +52,10 @@ class UserController extends Controller
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->route('showPosts');
+            if(auth()->user()->is_admin){
+                return redirect()->route('home');
+            }
+            return redirect()->intended('/home');
         };
 
 
@@ -63,6 +67,11 @@ class UserController extends Controller
 
     public function logout(){
         Auth::logout();
+        return redirect()->route('home');
+    }
+
+    public function deletePostAdmin(Post $post){
+        $post->delete();
         return redirect()->route('home');
     }
 }

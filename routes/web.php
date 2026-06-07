@@ -26,8 +26,15 @@ Route::get('/posts/create', [PostController::class, 'createForm'])->name('create
 
 Route::post('/posts/create', [PostController::class, 'createPost'])->name('createPost');
 
-Route::get('posts/edit/{post}', [PostController::class, 'editForm'])->name('editForm');
+Route::get('/posts/edit/{post}', [PostController::class, 'editForm'])->name('editForm');
 
 Route::post('/posts/edit/{post}', [PostController::class, 'editPost'])->name('editPost');
 
 Route::post('/posts/delete/{post}', [PostController::class, 'deletePost'])->name('deletePost');
+
+Route::post('/home/{post}', [UserController::class, 'deletePostAdmin'])->name('deletePostAdmin')->middleware('admin');
+
+Route::get('/home/search', [PostController::class, 'searchPost'])->name('ricerca');
+
+// Cambiato da Route::get a Route::post
+Route::post('/like/{post}', [PostController::class, 'likePost'])->name('like')->middleware('auth');

@@ -35,6 +35,58 @@ body {
     box-shadow: 0 4px 10px rgba(79, 70, 229, 0.25);
 }
 
+.ricerca{
+    margin-left: 70%;
+}
+
+.ricerca input{
+    padding: 0.65rem 1rem;
+    width: 220px;
+
+    font-size: 1rem;
+    color: #374151;
+
+    background-color: #f9fafb;
+    border: 1px solid #d1d5db;
+    border-radius: 10px 0 0 10px;
+
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.ricerca input::placeholder{
+    color: #9ca3af;
+}
+
+.ricerca input:focus{
+    border-color: #6366f1;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(99,102,241,0.2);
+}
+
+.ricerca button{
+    padding: 0.65rem 1rem;
+
+    font-size: 1rem;
+    cursor: pointer;
+
+    background-color: #6366f1;
+    color: white;
+
+    border: none;
+    border-radius: 0 10px 10px 0;
+
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.ricerca button:hover{
+    background-color: #4f46e5;
+}
+
+.ricerca button:active{
+    transform: scale(0.95);
+}
+
 /* MAIN CONTENT */
 main {
     max-width: 900px;
@@ -51,7 +103,7 @@ h1 {
 }
 
 h2 {
-    margin-top: 40px;
+    margin-top: 20px;
     color: #4f46e5;
 }
 
@@ -104,4 +156,80 @@ footer {
     padding: 20px;
     color: #6b7280;
     font-size: 14px;
+}
+
+.backHome {
+    margin-top: 20px;
+    margin-left: 20%;
+}
+
+.backHome a{
+    text-decoration: none;
+    color: #2563eb;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.backHome a:hover {
+    text-decoration: underline;
+}
+
+
+.message{
+    margin-top: 2rem;
+    padding: 1rem 1.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+    font-size: 1.05rem;
+    font-weight: 500;
+
+    color: #6b7280;              /* grigio soft */
+    background-color: #f9fafb;   /* sfondo chiaro */
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.like form{
+    display: flex;
+}
+
+.like form p{
+    margin-left: 5px;
+}
+
+.like button {
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+
+ 
+  border-radius: 999px;
+
+  transition: 
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* hover */
+.like button:hover {
+  background-color: rgba(255, 0, 0, 0.1);
+  transform: scale(1.15);
+}
+
+/* click */
+.like button:active {
+  transform: scale(0.95);
+}
+
+/* focus (accessibilità) */
+.like button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.25);
 }

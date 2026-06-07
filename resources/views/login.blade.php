@@ -37,6 +37,9 @@
         </div>
 
         <div class="form-errors">
+            @if(session('message'))
+                <p class="likeError">{{session('message')}}</p>
+            @endif
             @if ($errors->any())
                 <ul>
                     @foreach ($errors->all() as $error)

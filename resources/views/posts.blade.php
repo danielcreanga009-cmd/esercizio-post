@@ -17,7 +17,6 @@
     </div>
     
 
-    
 
     @foreach($posts as $post)
     <ul>

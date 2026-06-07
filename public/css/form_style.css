@@ -136,3 +136,9 @@ input{
 textarea{
     max-width: 380px;
 }
+
+.likeError{
+    color: red;
+    margin-left: 18%;
+    font-size: 1.2rem;
+}

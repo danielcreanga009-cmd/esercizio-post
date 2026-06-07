@@ -4,11 +4,16 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class PostController extends Controller
 {
     public function showPosts(){
+        if(auth()->user()->is_admin){
+            abort(403);
+        }
+        
         $posts = Post::where('user_id', auth()->id())->get();
         $user = User::find(auth()->id());
         return view('posts',['posts'=>$posts], ['user'=>$user]);
@@ -53,5 +58,26 @@ class PostController extends Controller
     public function deletePost(Post $post){
         $post->delete();
         return redirect()->route('showPosts');
+    }
+
+    public function searchPost(Request $request){
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $name = $request->name;
+
+        $posts = Post::where('title', $name)
+        ->orwhereHas('user', function($query) use ($name){
+            $query->where('name', $name);
+        })->get();
+
+        return view('ricercaPost',compact('posts'));
+    }
+
+    public function likePost(Post $post){
+        $user = Auth::user();
+        $user->likedPosts()->toggle($post->id);
+        return redirect()->route('home');
     }
 }

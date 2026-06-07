@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/home_style.css') }}">
-    <script src="{{ asset('js/home.js') }}"></script>
     <title>Post manager</title>
 </head>
 
@@ -20,33 +19,20 @@
         @endauth
 
         @guest
-            <a href="/posts">Crea un post</a>
+            <a href="{{route('login')}}">Crea un post</a>
             <a href="{{ route('login') }}">Login</a>
             <a href="{{ route('registerForm') }}">Registrati</a>
         @endguest
     </div>
 </header>
 
-<div class="accesso">
-    @isset($user)
-    <h3>Accesso effettuato come {{$user->name}}</h3>
-    @endisset
-    @empty($user)
-    <h3>Stai navigando anonimo</h3>
-    @endempty
-</div>
-
-<div class="ricerca">
-    <form action="{{route('ricerca')}}" method="GET">
-        <input type="text" name="name" placeholder="cerca un post">
-        <button type="submit">🔎</button>
-    </form>
+<div class="backHome">
+    <a href="/home">← Ritorna alla home</a>
 </div>
 
 <main>
     @foreach($posts as $post)
     <section>
-        
         <div class="like">
             @guest
                 <form action="{{ route('like', $post) }}" method="POST">
@@ -79,7 +65,6 @@
                 {{$post->user->name}}
             @endguest
         </h2>
-
         <div class="postBody">
             <ul>
                 <li class="title">{{$post->title}}</li>
@@ -92,6 +77,7 @@
                 </p>
             </div>
         </div>
+
         @auth
             @if(auth()->user()->is_admin)
                 <div class="elimina">
@@ -105,6 +91,10 @@
     </section>
     @endforeach
 </main>
+
+@if($posts->isEmpty())
+    <p class="message">Non esistono post in base alla tua ricerca</p>
+@endif
 
 <footer>
     <p>© {{ date('Y') }} Post Manager - Laravel CRUD Project</p>
