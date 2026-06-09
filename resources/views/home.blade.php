@@ -47,6 +47,7 @@
     @foreach($posts as $post)
     <section>
         
+    
         <div class="like">
             @guest
                 <form action="{{ route('like', $post) }}" method="POST">
@@ -56,18 +57,21 @@
                 </form>
             @endguest
             @auth
-            <form action="{{ route('like', $post) }}" method="POST">
-                @csrf 
-                
-                @if($post->likedByUsers->contains(auth()->id()))
-                    <button type="submit" style="color:red;">♥</button>
-                @else 
-                    <button type="submit" style="ùcolor:gray;">♡</button>
+                @if(!auth()->user()->is_admin)
+                    <form action="{{ route('like', $post) }}" method="POST">
+                        @csrf 
+                        
+                        @if($post->likedByUsers->contains(auth()->id()))
+                            <button type="submit" style="color:red;">♥</button>
+                        @else 
+                            <button type="submit" style="ùcolor:gray;">♡</button>
+                        @endif
+                        <p>{{$post->likedByUsers->count()}}</p>
+                    </form>
                 @endif
-                <p>{{$post->likedByUsers->count()}}</p>
-            </form>
             @endauth
         </div>
+    
         <h2>Creato da: 
             @auth
                 @if($post->user->name == auth()->user()->name)
