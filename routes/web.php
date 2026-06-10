@@ -36,5 +36,4 @@ Route::post('/home/{post}', [UserController::class, 'deletePostAdmin'])->name('d
 
 Route::get('/home/search', [PostController::class, 'searchPost'])->name('ricerca');
 
-// Cambiato da Route::get a Route::post
 Route::post('/like/{post}', [PostController::class, 'likePost'])->name('like')->middleware('auth');

@@ -78,6 +78,14 @@ class PostController extends Controller
     public function likePost(Post $post){
         $user = Auth::user();
         $user->likedPosts()->toggle($post->id);
-        return redirect()->route('home');
+
+        $liked = $post->likedByUsers()->where('user_id',auth()->id())->exists();
+        $likesCount = $post->likedByUsers->count();
+
+        return response()->json([
+            'liked' => $liked,
+            'likes_count' => $likesCount,
+        ]);
+
     }
 }
