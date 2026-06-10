@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/home_style.css') }}">
     <script src="{{ asset('js/home.js') }}"></script>
     <title>Post manager</title>
@@ -52,21 +53,22 @@
             @guest
                 <form action="{{ route('like', $post) }}" method="POST">
                     @csrf 
-                        <button type="submit" style="ùcolor:gray;">♡</button>
+                        <button type="submit" style="color:gray;">♡</button>
                         <p>{{$post->likedByUsers->count()}}</p>
                 </form>
             @endguest
             @auth
                 @if(!auth()->user()->is_admin)
-                    <form action="{{ route('like', $post) }}" method="POST">
+                    <form class="form-like" action="{{ route('like', $post) }}" method="POST">
                         @csrf 
                         
                         @if($post->likedByUsers->contains(auth()->id()))
-                            <button type="submit" style="color:red;">♥</button>
+                            <button type="submit", class="likeBtn">♥</button>
                         @else 
-                            <button type="submit" style="ùcolor:gray;">♡</button>
+                            <button type="submit", class="likeBtn">♡</button>
                         @endif
-                        <p>{{$post->likedByUsers->count()}}</p>
+
+                        <p class="numOfLike">{{$post->likedByUsers->count()}}</p>
                     </form>
                 @endif
             @endauth
