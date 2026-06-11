@@ -212,6 +212,7 @@ footer {
   font-size: 2rem;
   cursor: pointer;
 
+  color: red;
  
   border-radius: 999px;
 
@@ -225,4 +226,85 @@ footer {
 .like button:hover {
   background-color: rgba(255, 0, 0, 0.1);
   transform: scale(1.15);
+}
+
+/* overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+
+.modal {
+  background: white;
+  border-radius: 10px;
+  width: 420px;
+  max-width: 90%;
+  max-height: 85vh;
+  margin: 10% auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* header */
+.modalHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.modal form input {
+  resize: none;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-family: inherit;
+  width: 400px;
+}
+
+
+
+/* bottone submit */
+.modal form button {
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  background: #4f46e5;
+  color: white;
+}
+.scriviCommento {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }

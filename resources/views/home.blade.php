@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/home_style.css') }}">
-    <script src="{{ asset('js/home.js') }}"></script>
+    <script src="{{ asset('js/home.js') }}" defer></script> 
     <title>Post manager</title>
 </head>
 
@@ -73,6 +73,32 @@
                 @endif
             @endauth
         </div>
+
+        @auth
+        <div id="overlay" class="overlay">
+            <div class="modal">
+                <div class="modalHead">
+                    <h2>Scrivi un commento</h2>
+                    <button type="button" id="closeModal" onclick="closeForm()">❌</button>
+                </div>
+                
+                <form action="{{route('addComment', $post)}}" method="POST">
+                    @csrf
+                    <div class="scriviCommento">
+                       <input type="text" name="body" placeholder="Il tuo commento...">
+                        <button type="submit">Invia</button>
+                    </div>
+                    
+                </form>
+            </div>
+
+            <div class="commenti">
+
+            </div>
+        </div>
+
+        <button id="openModal" onclick="showCommentForm()">💬</button>
+        @endauth
     
         <h2>Creato da: 
             @auth
