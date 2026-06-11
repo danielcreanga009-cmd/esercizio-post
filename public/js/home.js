@@ -1,3 +1,5 @@
+//like
+
 document.addEventListener("DOMContentLoaded", function() {
 
     document.querySelectorAll(".form-like").forEach(form => {
@@ -38,3 +40,27 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 });
+
+//commenti
+
+const overlay = document.getElementById("overlay");
+const closeModal = document.getElementById("closeModal");
+
+function showOverlay(){
+    overlay.style.display = "block";
+    document.body.style.overflow= "hidden";
+}
+
+function hideOverlay(){
+    overlay.style.display = "none";
+    document.body.style.overflow= "auto";
+}
+
+function showCommentForm(){
+    showOverlay();
+}
+
+function closeForm(){
+    hideOverlay();
+}
+

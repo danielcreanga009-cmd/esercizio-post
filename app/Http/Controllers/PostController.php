@@ -67,10 +67,11 @@ class PostController extends Controller
 
         $name = $request->name;
 
-        $posts = Post::where('title', $name)
-        ->orwhereHas('user', function($query) use ($name){
-            $query->where('name', $name);
-        })->get();
+        $posts = Post::where('title', 'LIKE', '%' . $name . '%')
+        ->orWhereHas('user', function ($query) use ($name) {
+            $query->where('name', 'LIKE', '%' . $name . '%');
+        })
+        ->get();
 
         return view('ricercaPost',compact('posts'));
     }

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,3 +38,7 @@ Route::post('/home/{post}', [UserController::class, 'deletePostAdmin'])->name('d
 Route::get('/home/search', [PostController::class, 'searchPost'])->name('ricerca');
 
 Route::post('/like/{post}', [PostController::class, 'likePost'])->name('like')->middleware('auth');
+
+Route::post('/comments/{post}', [CommentController::class, 'addComment'])->name('addComment');
+
+//Route::post('/comments', [CommentController::class, 'showComments'])->name('showComments');
